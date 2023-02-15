@@ -146,38 +146,36 @@ Scene3: Object(Scotland), Object(UK), Object(EU), Region(r), Path(p),
 Scene4: Object(Scotland), Object(UK), Object(EU), Part_of(Scotland,EU)
 
 Strip: Fig. 18a The Buddhist Monk walking up and down the same path on two different days
-Scene1: Object(m), Path(p1), At-rest(m), Start-path(p1,m)
-Scene2: Object(m), Path(p1), Animate-motion(m), Move-along-path(m,p1),
-        Start-path(p1,m)
-Scene3: Object(m), Path(p1), Animate-motion(m), Move-along-path(m,p1)
-Scene4: Object(m), Path(p1), At-rest(m), End-path(p1,m)
-# an undirected path like that in Scene 4 makes no sense. Start-path
-# and End-Path are not defined.
-Scene5: Object(m), Path(p2), Animate-motion(m), Move-along-path(m,p2),
+Scene1: Object(m), Path(p), At-rest(m), Start-path(p,m)
+Scene2: Object(m), Path(p), Animate-motion(m), Move-along-path(m,p),
+        Start-path(p,m)
+Scene3: Object(m), Path(p), Animate-motion(m), Move-along-path(m,p)
+Scene4: Object(m), Path(p), At-rest(m), End-path(p,m)
+Scene5: Object(m), Path(p), Animate-motion(m), Move-against-path(m,p),
         Start-path(p2,m)
-Scene6: Object(m), Path(p2), Animate-motion(m), Move-along-path(m,p2)
+Scene6: Object(m), Path(p2), Animate-motion(m), Move-against-path(m,p),
 Scene7: Object(m), Path(p2), At-rest(m), End-path(p2,m)
-Reverse-path(p1,p2)   # new relation on paths
 
 Strip: Fig. 18b The conceptualisation of splitting the monk into two individuals walking the path at the same time
-Scene1: Object(m), Object(n), Path(p), Path(q), Reverse-path(p,q), 
-        At-rest(m), At-rest(n), Start-path(p,m), Start-path(q,n)
-Scene2: Object(m), Object(n), Path(p), Path(q), Reverse-path(p,q),
+Scene1: Object(m), Object(n), Path(p),
+        At-rest(m), At-rest(n), Start-path(p,m)
+Scene2: Object(m), Object(n), Path(p),
 	Animate-motion(m), Move-along-path(m,p), Start-path(p,m),
-	Animate-motion(n), Move-along-path(n,q), Start-path(q,n),
+	Animate-motion(n), Move-against-path(n,p)
 	Move-towards(m,n), Move-towards(n,m) 
-Scene3: Object(m), Object(n), Path(p), Path(q), Reverse-path(p,q),
+	# add Move-along-path(m,p), Move-against-path(n,p) here ???
+Scene3: Object(m), Object(n), Path(p),
 	Animate-motion(m), Move-along-path(m,p),
-	Animate-motion(n), Move-along-path(n,q),
+	Animate-motion(n), Move-against-path(n,p),
 	Move-towards(m,n), Move-towards(n,m), 
 	Contact(m,n)
-Scene4: Object(m), Object(n), Path(p), Path(q), Reverse-path(p,q),
+Scene4: Object(m), Object(n), Path(p),
 	Animate-motion(m), Move-along-path(m,p),
-	Animate-motion(n), Move-along-path(n,q),
+	Animate-motion(n), Move-against-path(n,p),
 	Move-away-from(m,n), Move-away-from(n,m) 
-Scene5: Object(m), Object(n), Path(p), Path(q), Reverse-path(p,q),
+Scene5: Object(m), Object(n), Path(p), 
 	At-rest(m), End-path(p,m),
-	At-rest(n), End-path(q,n)
+	At-rest(n), Start-path(p,n)
 
 Strip: Fig. 19b Blockage
 Scene1: Object(a), Object(b), Motion(a), At-rest(b), Move-towards(a,b),
