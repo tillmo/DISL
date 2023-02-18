@@ -23,7 +23,7 @@ Scene3: Object(a)
 Scene4:
 
 Strip: Fig. 8a Located_in
-Scene1: Object(a), Region(b), LocatedIn(a,b)
+Scene1: Object(a), Region(b), Located_In(a,b)
 
 Strip: Fig. 8b Splitting
 Scene1: Object(a)  # The dashed line is not represented here
@@ -34,11 +34,11 @@ Scene1: Object(a), Object(a)
 Scene2: Object(a)  # The dashed line is not represented here
 
 Strip: Fig. 9a Path_to
-Scene1: Path(p), Region(r), End-path(p,r)
+Scene1: Path(p), Region(r), End_Path(p,r)
 
 Strip: Fig. 9b Path to success
-Scene1: Path(p), Region(r), End-path(p,r),
-        Region(success), part_of(r,success) 
+Scene1: Path(p), Region(r), End_Path(p,r),
+        Region(success), Part_Of(r,success) 
 
 Strip: Fig. 9c Glue_link
 Scene1: Object(a), Object(b), Contact(a,b), Link(a,b)
@@ -53,134 +53,144 @@ Strip: Fig. 10c Growing
 Scene1: Object(a1)
 Scene2: Object(a2)
 Scene3: Object(a3)
-Permanence(a1,a2), Permanence(a2,a3)
-Smaller(a1,a2), Smaller(a2,a3)
+General: Permanence(a1,a2), Permanence(a2,a3),
+         Smaller(a1,a2), Smaller(a2,a3)
 
 
-Strip: Fig. 12a Self-motion
+Strip: Fig. 12a Self_motion
 Scene1: Object(a)
 Scene2: Object(a), Motion(a)
 
 Strip: Fig. 12b Two passengers in a train
-Scene1: Path(p), Object(t), Inanimate-Motion(t), Move-along-path(t,p),
-        Object(a), Contained(a,t), Animate-Motion(a),
-	Object(b), Contained(b,t), At-Rest(b)
-# Open question: is Move-along-path a primitive? see todonote in paper
-# Open question: How to capture movement in opposite direction 
+Scene1: Path(p), Object(t), Inanimate_Motion(t), Motion_Along_Path(t,p),
+        Object(a), Contained(a,t), Animate_Motion(a),
+	Object(b), Contained(b,t), At_Rest(b)
 
 Strip: Fig. 13a Push
 Scene1: Object(a), Object(b), Contact(a,b),
-        Active-Umph(a), Passive-Umph(b)
-Scene2: Object(a), Object(b), Motion(b), Move-away-from(b,a)?
+        Active_Umph(a), Passive_Umph(b)
+Scene2: Object(a), Object(b), Motion(b), Move_Away_From(b,a)?
 
 Strip: Fig. 13b Pull
 Scene1: Object(a), Object(b), Link(a,b), Contact(a,b),
-        Active-Umph(a), Inanimate-Motion(a)
- 	    Passive-Umph(b), Motion(b)
+        Active_Umph(a), Inanimate_Motion(a),
+        Passive_Umph(b), Motion(b)
 
-Strip: Fig. 14a Motion_along_path from a Start_path
+Strip: Fig. 14a Motion_Along_Path From a Start_Path
 Scene1: Region(r), Object(a), Path(p),
-        Start-path(p,r), Move-along-path(a,p), Motion(a)
+        Start_Path(p,r), Motion_Along_Path(a,p), Motion(a)
 
 Strip: Fig. 14b Object moving into Container
 Scene1: Object(a), Container(b), Region(r), Path(p),
-        Move-along-path(a,p), Motion(a),
-	End-path(p,r), Part-of(r,b), Open(b)
-# Do we need both Move-along-path and Motion? 
+        Motion_Along_Path(a,p), Motion(a),
+	End_Path(p,r), Part_Of(r,b), Open(b)
 
 Strip: Fig. 14c Full image schema of Object Going_Into Container
 Scene1: Object(a), Container(b), Path(p), Region(r), 
-        Move-along-path(a,p), Motion(a),
-	    End-path(p,r), Part-of(r,b), Open(b),
+        Motion_Along_Path(a,p), Motion(a),
+	    End_Path(p,r), Part_Of(r,b), Open(b),
 Scene2: Object(a), Container(b), Path(p), Region(r), 
-        Move-along-path(a,p), Motion(a),
-	    End-path(p,r), Part-of(r,b), Open(b),
-	    Contact(a,b)
+        Motion_Along_Path(a,p), Motion(a),
+        End_Path(p,r), Part_Of(r,b), Open(b),
+        Contact(a,b)
 Scene3: Object(a), Container(b), Contained(a,b)
-        At-rest(a), Open(b), Full(b)
+        At_Rest(a), Open(b), Full(b)
 
 Strip: Fig. 15a An object falls on top of another object
-Scene1: Object(a), Object(b), Above(a,b), Motion(a), Move-towards(a,b)
+Scene1: Object(a), Object(b), Above(a,b), Motion(a), Move_Towards(a,b)
 Scene2: Object(a), Object(b), Above(a,b), Contact(a,b), 
-        Active-Umph(a), Passive-Umph(b), 
+        Active_Umph(a), Passive_Umph(b), 
 Scene3: Object(a), Object(b), Above(a,b), Contact(a,b)
 
 Strip: Fig. 15b The transfer of movement
-Scene1: Object(a), Object(b), Motion(a), At-rest(b), Move-towards(a,b)
-Scene2: Object(a), Object(b), At-rest(b), Contact(a,b), 
-        Active-Umph(a), Passive-Umph(b)
-Scene3: Object(a), Object(b), At-rest(a), Motion(b), 
-        Move-away-from(a,b)
+Scene1: Object(a), Object(b), Motion(a), At_Rest(b), Move_Towards(a,b)
+Scene2: Object(a), Object(b), At_Rest(b), Contact(a,b), 
+        Active_Umph(a), Passive_Umph(b)
+Scene3: Object(a), Object(b), At_Rest(a), Motion(b), 
+        Move_Away_From(a,b)
 
 Strip: Fig. 16a A falling object splits into parts on impact
-Scene1: Object(a), Object(b), Motion(a), Above(a,b), Move-towards(a,b)
+Scene1: Object(a), Object(b), Motion(a), Above(a,b), Move_Towards(a,b)
 Scene2: Object(a), Object(b), Above(a,b), Contact(a,b),
-        Active-Umph(a), Passive-Umph(b)
+        Active_Umph(a), Passive_Umph(b)
 Scene3: Object(a), Object(b), Above(a,b), Contact(a,b)
         # The dashed line in a is not represented here
 Scene4: Object(a1), Object(a2), Object(a3), Object(b),
         Above(a1,b), Above(a2,b), Above(a3,b),
 	Motion(a1), Motion(a2), Motion(a3), 
-	Contact(a1,b)?, Contact(a2,b)?
+	Contact(a1,b), Contact(a2,b)
 Scene5: Object(a1), Object(a2), Object(a3), Object(b),
         Above(a1,b), Above(a2,b), Above(a3,b),
-	At-rest(a1), At-rest(a2), At-rest(a3), 
-	Contact(a1,b)?, Contact(a2,b)?, Contact(a1,a3)?
-Part_of(a1,a), Part_of(a2,a), Part_of(a3,a)
+	At_Rest(a1), At_Rest(a2), At_Rest(a3), 
+	Contact(a1,b), Contact(a2,b), Contact(a1,a3)
+General: Part_Of(a1,a), Part_Of(a2,a), Part_Of(a3,a)
 
 Strip: Fig. 16b An object crashes into another object that splits
-Scene1: Object(a), Object(b), Motion(a), At-rest(b), Move-towards(a,b)
-Scene2: Object(a), Object(b), Contact(a,b), At-rest(b),
-        Active-Umph(a), Passive-Umph(b)
-Scene3: Object(a), Object(b), Contact(a,b), At-rest(b),
+Scene1: Object(a), Object(b), Motion(a), At_Rest(b), Move_Towards(a,b)
+Scene2: Object(a), Object(b), Contact(a,b), At_Rest(b),
+        Active_Umph(a), Passive_Umph(b)
+Scene3: Object(a), Object(b), Contact(a,b), At_Rest(b),
         # The dashed line in b is not represented here
 Scene4: Object(a), Object(b1), Object(b2), Motion(b1), Motion(b2)
-Part_of(b1,b), Part_of(b2,b)
+General: Part_Of(b1,b), Part_Of(b2,b)
 
 Strip: Fig. 17 Scotland leaves the UK and joins the EU
-Scene1: Object(Scotland), Object(UK), Object(EU), Part_of(Scotland,UK)
+Scene1: Object(Scotland), Object(UK), Object(EU), Part_Of(Scotland,UK)
 Scene2: Object(Scotland), Object(UK), Object(EU)
 Scene3: Object(Scotland), Object(UK), Object(EU), Region(r), Path(p),  
-        Move-along-path(Scotland,p), Moving(Scotland),
-        End-path(p,r), Part-of(r, EU) 
-Scene4: Object(Scotland), Object(UK), Object(EU), Part_of(Scotland,EU)
+        Motion_Along_Path(Scotland,p), Motion(Scotland),
+        End_Path(p,r), Part_Of(r, EU) 
+Scene4: Object(Scotland), Object(UK), Object(EU), Part_Of(Scotland,EU)
 
-Strip: Fig. 18a The Buddhist Monk walking up and down the same path on two different days
-Scene1: Object(m), Path(p), At-rest(m), Start-path(p,m)
-Scene2: Object(m), Path(p), Animate-motion(m), Move-along-path(m,p),
-        Start-path(p,m)
-Scene3: Object(m), Path(p), Animate-motion(m), Move-along-path(m,p)
-Scene4: Object(m), Path(p), At-rest(m), End-path(p,m)
-Scene5: Object(m), Path(p), Animate-motion(m), Move-against-path(m,p),
-        Start-path(p2,m)
-Scene6: Object(m), Path(p2), Animate-motion(m), Move-against-path(m,p),
-Scene7: Object(m), Path(p2), At-rest(m), End-path(p2,m)
+Strip: Fig. 18a The Buddhist Monk walking up and down the same Path on two different days
+Scene1: Object(m), Path(p), At_Rest(m), Start_Path(p,m)
+Scene2: Object(m), Path(p), Animate_Motion(m), Motion_Along_Path(m,p),
+        Start_Path(p,m)
+Scene3: Object(m), Path(p), Animate_Motion(m), Motion_Along_Path(m,p)
+Scene4: Object(m), Path(p), At_Rest(m), End_Path(p,m)
+Scene5: Object(m), Path(p), Animate_Motion(m), Move_Against_Path(m,p),
+        Start_Path(p2,m)
+Scene6: Object(m), Path(p2), Animate_Motion(m), Move_Against_Path(m,p),
+Scene7: Object(m), Path(p2), At_Rest(m), End_Path(p2,m)
 
-Strip: Fig. 18b The conceptualisation of splitting the monk into two individuals walking the path at the same time
+Strip: Fig. 18b The conceptualisation of splitting the monk into two individuals walking the Path at the same time
 Scene1: Object(m), Object(n), Path(p),
-        At-rest(m), At-rest(n), Start-path(p,m)
+        At_Rest(m), At_Rest(n), Start_Path(p,m)
 Scene2: Object(m), Object(n), Path(p),
-	Animate-motion(m), Move-along-path(m,p), Start-path(p,m),
-	Animate-motion(n), Move-against-path(n,p)
-	Move-towards(m,n), Move-towards(n,m) 
-	# add Move-along-path(m,p), Move-against-path(n,p) here ???
+	Animate_Motion(m), Motion_Along_Path(m,p), Start_Path(p,m),
+	Animate_Motion(n), Move_Against_Path(n,p), End_Path(p,n),
+	Move_Towards(m,n), Move_Towards(n,m) 
 Scene3: Object(m), Object(n), Path(p),
-	Animate-motion(m), Move-along-path(m,p),
-	Animate-motion(n), Move-against-path(n,p),
-	Move-towards(m,n), Move-towards(n,m), 
+	Animate_Motion(m), Motion_Along_Path(m,p),
+	Animate_Motion(n), Move_Against_Path(n,p),
+	Move_Towards(m,n), Move_Towards(n,m), 
 	Contact(m,n)
 Scene4: Object(m), Object(n), Path(p),
-	Animate-motion(m), Move-along-path(m,p),
-	Animate-motion(n), Move-against-path(n,p),
-	Move-away-from(m,n), Move-away-from(n,m) 
+	Animate_Motion(m), Motion_Along_Path(m,p),
+	Animate_Motion(n), Move_Against_Path(n,p),
+	Move_Away_From(m,n), Move_Away_From(n,m) 
 Scene5: Object(m), Object(n), Path(p), 
-	At-rest(m), End-path(p,m),
-	At-rest(n), Start-path(p,n)
+	At_Rest(m), End_Path(p,m),
+	At_Rest(n), Start_Path(p,n)
 
 Strip: Fig. 19b Blockage
-Scene1: Object(a), Object(b), Motion(a), At-rest(b), Move-towards(a,b),
-        Path(p), Move-along-path(a,p), Contact(p,b)
-Scene2: Object(a), Object(b), Motion(a), At-rest(b), Move-towards(a,b),
-        Path(p), Move-along-path(a,p), Contact(p,b), Contact(a,b)
-Scene3: Object(a), Object(b), At-rest(a), At-rest(b), Contact(a,b)
+Scene1: Object(a), Object(b), Motion(a), At_Rest(b), Move_Towards(a,b),
+        Path(p), Motion_Along_Path(a,p), Contact(p,b)
+Scene2: Object(a), Object(b), Motion(a), At_Rest(b), Move_Towards(a,b),
+        Path(p), Motion_Along_Path(a,p), Contact(p,b), Contact(a,b)
+Scene3: Object(a), Object(b), At_Rest(a), At_Rest(b), Contact(a,b)
 
+
+Definition: Motion_On_Path(a,p) =
+            Path(p), Contact(a,p), Motion(a)
+
+Definition: Motion_Along_Path(a,b) = 
+  Path(p) ∧ Contact(a,p) ∧ Motion(a) ∧
+  ∃x (  (Start_Path(p,x) ∧ Move_Away_From(a,x))
+      ∨ (End_Path(p,x) ∧ Move_Towards(a,x)))
+
+
+Definition: Motion_Against_Path(a,b) =
+  Path(p) ∧ Contact(a,p) ∧ Motion(a) ∧
+  ∃x (  (Start_Path(p,x) ∧ Move_Towards(a,x))
+      ∨ (End_Path(p,x) ∧ Move_Away_From(a,x)))
