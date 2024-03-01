@@ -8,7 +8,8 @@
 
 Spec: Base
 closed preds
-Object(1), Container(1), Path(1), Region(1), Down(1), Located_In(1),
+Object(1), Container(1), Path(1), Region(1), Down(1),
+Location(2), Located_In(2),
 Start_Path(2), End_Path(2), Contact(2), Contained(2), Smaller(2), 
 Part_Of(2), Active_Umph(1), Passive_Umph(1), Permanence(2)
 open preds
